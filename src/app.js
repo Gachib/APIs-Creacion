@@ -11,6 +11,7 @@ const genresRoutes = require('./routes/genresRoutes');
 
 //Aquí pueden colocar las rutas de las APIs
 const apiGenresRoutes = require('./routes/api/genresRoutes');
+const apiMoviesRoutes = require('./routes/api/moviesRoutes');
 
 // view engine setup
 app.set('views', path.resolve(__dirname, './views'));
@@ -20,6 +21,7 @@ app.use(express.static(path.resolve(__dirname, '../public')));
 
 //URL encode  - Para que nos pueda llegar la información desde el formulario al req.body
 app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 
 //Aquí estoy disponiendo la posibilidad para utilizar el seteo en los formularios para el usod e los metodos put ó delete
 app.use(methodOverride('_method'));
@@ -28,6 +30,7 @@ app.use('/', indexRouter);
 app.use(moviesRoutes);
 app.use(genresRoutes);
 app.use(apiGenresRoutes);
+app.use(apiMoviesRoutes);
 
 
 //Activando el servidor desde express
